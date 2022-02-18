@@ -27,7 +27,7 @@ app.use("/api", [userRouter, movieRouter, commentRouter]);
 
 
 app.use((err, req, res, next) => {
-    res.status(401).send({ result: "fail", msg: err.message })
+    res.status(401).send({ errorMessage: err })
 })
 
 

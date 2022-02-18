@@ -6,17 +6,20 @@ const commentSchema = new mongoose.Schema({
         type:String,
         require:true,
     },
-    user_id:{
+    userId:{
         type:String,
         require:true,
     },
-    article_id:{
+    movieId:{
         type:String,
         require:true,
     },
     content: {
         type: String,
         required: true
+    },
+    countLikes: {
+        type: Number,
     },
     date: {
         type: String,
