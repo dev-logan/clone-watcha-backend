@@ -128,9 +128,8 @@ router.delete("/comments/:commentId/likes",authMiddleware, async(req, res) => {
 
 router.get("/comments/:commentId/likes", async(req, res) => {
     const {commentId} = req.params
-    console.log(commentId)
-    const likeUsers = await Like.find({commentId})
-    console.log(likeUsers)
+    const existLikeUsers = await Like.find({commentId})
+    const likeUsers = existLikeUsers.map((item)=>item.userId)
     res.json({likeUsers})
 });
 
