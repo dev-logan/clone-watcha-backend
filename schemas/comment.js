@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 
 const commentSchema = new mongoose.Schema({
-    comment_id:{
-        type:String,
-        require:true,
-    },
+    // comment_id:{
+    //     type:String,
+    //     required:true,
+    // },
     userId:{
         type:String,
-        require:true,
+        required:true,
     },
     movieId:{
         type:String,
-        require:true,
+        required:true,
     },
     content: {
         type: String,
@@ -21,11 +21,7 @@ const commentSchema = new mongoose.Schema({
     countLikes: {
         type: Number,
     },
-    date: {
-        type: String,
-        default: moment().format("YYYY-MM-DD hh:mm"),
-    }
-})
+},{timestamps: true})
 
 commentSchema.virtual("commentId").get(function () {
     return this._id.toHexString();
