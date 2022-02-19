@@ -4,7 +4,11 @@ const bcrypt = require("bcrypt")
 
 
 const UserSchema = new mongoose.Schema({
-    user_id: {
+    userId: {
+        type: String,
+        required: true,
+    },
+    userName: {
         type: String,
         required: true,
     },
@@ -14,13 +18,13 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-// 버츄얼 필드
-UserSchema.virtual("userId").get(function () {
-    return this._id.toHexString();
-});
-UserSchema.set("toJSON", {
-    virtuals: true,
-});
+// // 버츄얼 필드
+// UserSchema.virtual("userId").get(function () {
+//     return this._id.toHexString();
+// });
+// UserSchema.set("toJSON", {
+//     virtuals: true,
+// });
 
 // 사전 hook , save 시 password 암호화 해서 저장
 UserSchema.pre("save", function (next) {
@@ -34,8 +38,6 @@ UserSchema.pre("save", function (next) {
         })
     })
 })
-
-
 
 // 해당 메소드 사용 시 기존과 비교 실시
 UserSchema.methods.compare = function (password) {
