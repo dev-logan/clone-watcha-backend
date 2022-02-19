@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
-const moment = require("moment");
+const mongoose = require('mongoose')
+const moment = require('moment')
 
 const likeSchema = new mongoose.Schema({
-    userId:{
-        type:String,
-        required:true,
+    userId: {
+        type: String,
+        required: true,
     },
-    commentId:{
-        type:String,
-        required:true,
+    commentId: {
+        type: String,
+        required: true,
     },
 })
 
@@ -19,4 +19,4 @@ const likeSchema = new mongoose.Schema({
 //     virtuals: true,
 // });
 
-module.exports = mongoose.model("like", likeSchema)
+module.exports = mongoose.model('like', likeSchema)

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const moment = require("moment");
+const mongoose = require('mongoose')
+const moment = require('moment')
 
 const movieSchema = new mongoose.Schema({
     title: {
@@ -8,31 +8,31 @@ const movieSchema = new mongoose.Schema({
     },
     user_id: {
         type: String,
-        required: true
+        required: true,
     },
     image: {
         type: String,
-        required: true
+        required: true,
     },
     content: {
         type: String,
-        required: true
+        required: true,
     },
     year: {
         type: Number,
-        required: true
+        required: true,
     },
     date: {
         type: String,
-        default: moment().format("YYYY-MM-DD HH:mm"),
-    }
+        default: moment().format('YYYY-MM-DD HH:mm'),
+    },
 })
 
-movieSchema.virtual("articleId").get(function () {
-    return this._id.toHexString();
-});
-movieSchema.set("toJSON", {
+movieSchema.virtual('articleId').get(function () {
+    return this._id.toHexString()
+})
+movieSchema.set('toJSON', {
     virtuals: true,
-});
+})
 
-module.exports = mongoose.model("Movie", movieSchema)
+module.exports = mongoose.model('Movie', movieSchema)
