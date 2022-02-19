@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
     }
     try {
         const { userId } = jwt.verify(authToken, JWT_SECRET_KEY);
-        console.log(userId)
         User.findOne({userId}).then((user) => {
             res.locals.user = user;
             next();

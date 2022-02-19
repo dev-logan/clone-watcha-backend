@@ -4,11 +4,11 @@ const moment = require("moment");
 const likeSchema = new mongoose.Schema({
     userId:{
         type:String,
-        require:true,
+        required:true,
     },
     commentId:{
         type:String,
-        require:true,
+        required:true,
     },
 })
 
