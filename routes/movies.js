@@ -65,6 +65,12 @@ router.get('/movies/:movieId/stars', async (req, res) => {
     const { movieId } = req.params
 
     const allStars = await Star.find({ movieId })
+    if (!allStars.length) {
+        const averageStar = 0
+        const numRatings = 0
+        const countsPerStars = [0, 0, 0, 0, 0]
+        return res.json({ averageStar, numRatings, countsPerStars })
+    }
 
     const numRatings = allStars.length
     const stars = allStars.map((x) => x.stars)
