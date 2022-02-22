@@ -32,9 +32,9 @@ router.post('/movies/:movieId/comments', authMiddleware, async (req, res) => {
     // authMiddelware 오면 밑에 주석 제거
     const { userId } = res.locals.user
     const { movieId } = req.params
-    const { content } = req.body // authMiddelware 오면 userId 제거
+    const { comment } = req.body // authMiddelware 오면 userId 제거
     const countLikes = 0
-    if (!content) {
+    if (!comment) {
         return res
             .status(400)
             .json({ errorMessage: '댓글을 입력하지 않았습니다.' })
@@ -45,7 +45,7 @@ router.post('/movies/:movieId/comments', authMiddleware, async (req, res) => {
             .status(400)
             .json({ errorMessage: '이미 댓글을 작성하였습니다.' })
     }
-    await Comment.create({ movieId, userId, content, countLikes })
+    await Comment.create({ movieId, userId, comment, countLikes })
     res.status(201).json({ message: '댓글 작성이 완료되었습니다.' })
 })
 
@@ -54,8 +54,8 @@ router.patch('/comments/:commentId', authMiddleware, async (req, res) => {
     // authMiddelware 오면 밑에 주석 제거
     const { userId } = res.locals.user
     const { commentId } = req.params
-    const { content } = req.body // authMiddelware 오면 userId 제거
-    if (!content) {
+    const { comment } = req.body // authMiddelware 오면 userId 제거
+    if (!comment) {
         return res
             .status(400)
             .json({ errorMessage: '댓글을 입력하지 않았습니다.' })
@@ -67,7 +67,7 @@ router.patch('/comments/:commentId', authMiddleware, async (req, res) => {
             .status(400)
             .json({ errorMessage: '자기 댓글만 삭제할 수 있습니다.' })
     } else {
-        await Comment.updateOne({ _id: commentId }, { $set: { content } })
+        await Comment.updateOne({ _id: commentId }, { $set: { comment } })
     }
     res.status(201).json({ message: '댓글 수정이 완료되었습니다.' })
 })
