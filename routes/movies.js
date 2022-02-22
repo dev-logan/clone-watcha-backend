@@ -25,6 +25,22 @@ router.get('/movies/:movieId/details', async (req, res) => {
     res.json({ movieInfo })
 })
 
+// 개인 별점 조회
+router.get('/movies/:movieId/stars', authMiddleware ,async (req, res) => {
+    const { movieId } = req.params
+    const { userId } = res.locals.user
+    const existStar = await Star.findOne({movieId,userId})
+    let myStar = 0
+    if(!existStar){
+        mystar = 0
+    } else{
+        myStar = existStar.stars    
+    }
+    res.json({ myStar })
+})
+
+
+
 // 별점 추가
 router.post('/movies/:movieId/stars', authMiddleware, async (req, res) => {
     const { movieId } = req.params
