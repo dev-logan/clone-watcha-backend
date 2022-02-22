@@ -32,7 +32,7 @@ router.get('/movies/:movieId/stars', authMiddleware ,async (req, res) => {
     const existStar = await Star.findOne({movieId,userId})
     let myStar = 0
     if(!existStar){
-        mystar = 0
+        myStar = 0
     } else{
         myStar = existStar.stars    
     }
