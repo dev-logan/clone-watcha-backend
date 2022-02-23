@@ -6,12 +6,26 @@ const Comment = require('../schemas/comment')
 const Like = require('../schemas/like')
 const authMiddleware = require('../middlewares/auth-middleware')
 const jwt = require('jsonwebtoken')
+const Star = require('../schemas/star')
 
 //전체 댓글 조회
 router.get('/movies/:movieId/comments', async (req, res) => {
     const { movieId } = req.params
     const comments = await Comment.find({ movieId })
-    res.send(comments)
+
+    for (const comment of comments) {
+        const userId = comment.userId
+        const existStar = await Star.findOne({ movieId, userId })
+        let stars
+        if (existStar) {
+            stars = existStar.stars
+        } else {
+            stars = 0
+        }
+        comment.commentStar = stars
+    }
+
+    res.json({ comments })
 })
 
 //내 댓글 조회

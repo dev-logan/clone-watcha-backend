@@ -22,6 +22,9 @@ const commentSchema = new mongoose.Schema(
         countLikes: {
             type: Number,
         },
+        commentStar: {
+            type: Number,
+        },
     },
     { timestamps: true }
 )
