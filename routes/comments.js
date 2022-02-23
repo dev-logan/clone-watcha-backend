@@ -25,7 +25,7 @@ router.get('/movies/:movieId/comments', async (req, res) => {
         comment.commentStar = stars
     }
 
-    res.json({ comments })
+    res.send(comments)
 })
 
 //내 댓글 조회
