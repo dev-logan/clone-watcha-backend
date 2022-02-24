@@ -12,7 +12,7 @@ const authMiddleware = require('../middlewares/auth-middleware')
 
 // 메인 페이지 영화 조회
 router.get('/movies', async (req, res) => {
-    const movies = await Movie.find({}).select(
+    const movies = await Movie.find({ page: 1 }).select(
         'movieId title posterUrl year country category'
     )
     res.json({ movies })
