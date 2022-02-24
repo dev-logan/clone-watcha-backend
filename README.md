@@ -24,6 +24,7 @@
 ## 🏢 Back Office git
 
 -   https://github.com/fancyers/clone-watcha-backend
+-   TMDB API: https://github.com/fancyers/clone-watcha-tmdb
 
 <br><br>
 
