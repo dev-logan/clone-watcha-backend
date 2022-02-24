@@ -54,8 +54,9 @@ router.post('/users/auth', async (req, res) => {
         })
     }
     console.log(userId, '로 로그인 되었습니다.')
-    res.send({
+    res.json({
         token: jwt.sign({ userId: user.userId }, JWT_SECRET_KEY),
+        userId
     })
 })
 
