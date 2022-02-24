@@ -12,6 +12,8 @@
 ## 📖 History
 항해 99 5기 클론코딩 프로젝트로써 시작하게 되었습니다. 2022.2.18 - 2022.2.24 총 7일간 제작의 결과물입니다.
 
+제작과정: https://simplistic-wheel-ba2.notion.site/4-27617924ca4845a49d22f93bf10ccd63
+
 
 
 <br><br>
